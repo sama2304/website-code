@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Video Surprise</title>
+    <style>
+        /* Style for the unlocking page background */
+        body.unlock-page {
+            background: url('photo1.jpg') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #ff00fb;
+        }
+
+        /* Style for the main video page background */
+        body.video-page {
+            background: url('photo2.jpg') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #e21865;
+        }
+
+        /* Unlock form styling */
+        #unlockForm {
+            background-color: rgb(9, 30, 45);
+            padding: 40px;
+            border-radius: 50px;
+            text-align:center;
+        }
+
+        input[type="password"], input[type="submit"] {
+            padding: 25px;
+            margin-top: 10px;
+            border-radius: 10px;
+            font-size: 20px;
+        }
+
+        input[type="submit"] {
+            background-color: #e91e63;
+            color: rgb(27, 6, 6);
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Video container styling */
+        #videoContainer {
+            display: none;
+            flex-direction: column;
+            align-items: stretch;
+            text-align: center;
+        }
+
+        video {
+            width: 95%;
+            max-width: 1000px;
+            border-radius: 15px;
+            box-shadow: 0 0 100px rgba(0, 255, 162, 0.5);
+        }
+    </style>
+</head>
+<body class="unlock-page">
+
+    <!-- Unlock Form -->
+    <div id="unlockForm">
+        <h2>If You Know Me Then Unlock</h2>
+        <input type="password" id="passwordInput" placeholder="Enter Password">
+        <input type="submit" value="Unlock" onclick="checkPassword()">
+    </div>
+
+    <!-- Video Container -->
+    <div id="videoContainer">
+        <h1>CONGRATULATIONS</h1>
+        <h2>Wel-Come Dear SweetHeart</h2>
+        <video controls>
+            <source src="new-video.mp4.mp4" type="video/mp4"> <!-- Replace with your video file -->
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <script>
+        // Set your password here
+        const correctPassword = "golu2304"; // Change to your chosen password
+
+        function checkPassword() {
+            const enteredPassword = document.getElementById("passwordInput").value;
+            if (enteredPassword === correctPassword) {
+                // Switch to video page background and show video
+                document.body.classList.remove("unlock-page");
+                document.body.classList.add("video-page");
+                
+                // Hide unlock form and display video container
+                document.getElementById("unlockForm").style.display = "none";
+                document.getElementById("videoContainer").style.display = "flex";
+            } else {
+                alert("Incorrect password, please try again.");
+            }
+        }
+    </script>
+
+</body>
+</html>
